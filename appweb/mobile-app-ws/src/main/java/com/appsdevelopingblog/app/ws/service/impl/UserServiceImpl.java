@@ -2,12 +2,14 @@ package com.appsdevelopingblog.app.ws.service.impl;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.appsdevelopingblog.app.ws.UserRepository;
 import com.appsdevelopingblog.app.ws.service.UserService;
 import com.appsdevelopingblog.app.ws.shared.dto.UserDto;
 import com.appsdevelopingblog.app.ws.ui.entity.UserEntity;
 
+@Service
 public class UserServiceImpl implements UserService{
 
 	@Autowired

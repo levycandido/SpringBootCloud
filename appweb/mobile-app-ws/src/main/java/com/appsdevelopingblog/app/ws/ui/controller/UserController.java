@@ -17,7 +17,7 @@ import com.appsdevelopingblog.app.ws.ui.model.response.UserRest;
 @RequestMapping("users")
 public class UserController {
 	
-	@Autowired
+	@Autowired(required=true)
 	UserService userService;
 	@GetMapping
 	public String getUsers() {

@@ -1,21 +1,21 @@
 package com.appsdevelopingblog.app.ws.request;
 
 public class UserDetailsRequestModel {
-	private String fistname;
-	private String lastname;
+	private String firstName;
+	private String lastName;
 	private String email;
 	private String password;
-	public String getFistname() {
-		return fistname;
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setFistname(String fistname) {
-		this.fistname = fistname;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
-	public String getLastname() {
-		return lastname;
+	public String getLastName() {
+		return lastName;
 	}
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 	public String getEmail() {
 		return email;
@@ -29,6 +29,7 @@ public class UserDetailsRequestModel {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
 	
 	
 		
