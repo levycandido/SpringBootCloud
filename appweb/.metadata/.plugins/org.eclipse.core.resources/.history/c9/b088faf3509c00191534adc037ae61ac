@@ -1,0 +1,17 @@
+package com.appsdevelopingblog.app.ws.shared.dto;
+
+public class UserDto {
+	private String userId;
+	private String fistName;
+	private String lastName;
+	private String Email;
+	private String fistname;
+	private String lastname;
+	private String email;
+	private String password;
+	private String encryptedPassword;
+	private String emailVerificationToken;
+	private String emailVerificationStatus;
+
+
+}

@@ -1,0 +1,19 @@
+package com.appsdevelopingblog.app.ws.shared.dto;
+
+import java.io.Serializable;
+
+public class UserDto implements Serializable {
+	private String userId;
+	private String fistName;
+	private String lastName;
+	private String Email;
+	private String fistname;
+	private String lastname;
+	private String email;
+	private String password;
+	private String encryptedPassword;
+	private String emailVerificationToken;
+	private String emailVerificationStatus;
+
+
+}

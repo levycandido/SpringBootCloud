@@ -1,0 +1,5 @@
+package com.appsdevelopingblog.app.ws.service;
+
+public class UserService {
+
+}

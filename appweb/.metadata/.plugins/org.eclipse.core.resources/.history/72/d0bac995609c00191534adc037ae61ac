@@ -1,0 +1,20 @@
+package com.appsdevelopingblog.app.ws.ui.entity;
+
+import java.io.Serializable;
+
+import javax.persistence.GeneratedValue;
+
+import org.springframework.data.annotation.Id;
+
+public class UserEntity implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -244712593981348519L;
+	
+	@Id
+	@GeneratedValue
+	private long id;
+
+}

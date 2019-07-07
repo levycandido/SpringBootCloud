@@ -1,0 +1,24 @@
+package com.appsdevelopingblog.app.ws.ui.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.appsdevelopingblog.app.ws.ui.model.response.UserRest;
+
+@RestController
+@RequestMapping("users")
+public class UserController {
+	
+	@GetMapping
+	public String getUsers() {
+		return "All users";
+	}
+
+	@PostMapping
+	public UserRest createUsers(@RequestBody UserDetailsRequestModel) {
+		return "All users";
+	}
+
+	
+}

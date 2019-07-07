@@ -1,0 +1,9 @@
+package com.appsdevelopingblog.app.ws.ui.entity;
+
+import java.io.Serializable;
+
+public class UserEntity implements Serializable {
+	
+	
+
+}

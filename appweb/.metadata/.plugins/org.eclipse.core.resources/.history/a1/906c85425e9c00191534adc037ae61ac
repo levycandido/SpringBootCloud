@@ -1,0 +1,5 @@
+package com.appsdevelopingblog.app.ws.service;
+
+public interface UserService {
+	UserDto createUser(UserDto user);
+}

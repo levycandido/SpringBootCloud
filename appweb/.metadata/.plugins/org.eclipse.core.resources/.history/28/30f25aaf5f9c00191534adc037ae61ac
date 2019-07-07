@@ -1,0 +1,5 @@
+package com.appsdevelopingblog.app.ws.ui.entity;
+
+public class UserEntity implements Serializable {
+
+}

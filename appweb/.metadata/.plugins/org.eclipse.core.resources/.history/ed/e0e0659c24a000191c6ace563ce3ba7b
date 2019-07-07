@@ -1,0 +1,4 @@
+spring.datasource.username=sergey;
+spring.datasource.password=sergey
+spring.datasource.url=jdbc:mysql://localhost:3306/sergey;
+spring.jpa.hibernate.ddl-auto=update

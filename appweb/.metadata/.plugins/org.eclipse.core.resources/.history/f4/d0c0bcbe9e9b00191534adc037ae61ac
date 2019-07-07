@@ -1,0 +1,6 @@
+package com.appsdevelopingblog.app.ws.controller;
+
+@RestController
+public class UserController {
+
+}
