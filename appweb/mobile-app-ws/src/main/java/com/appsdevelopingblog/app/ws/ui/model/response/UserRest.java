@@ -4,7 +4,7 @@ public class UserRest {
   private String userId;
   private String firstName;
   private String lastName;
-  private String Email;
+  private String email;
 public String getUserId() {
 	return userId;
 }
@@ -25,10 +25,10 @@ public void setLastName(String lastName) {
 	this.lastName = lastName;
 }
 public String getEmail() {
-	return Email;
+	return email;
 }
 public void setEmail(String email) {
-	Email = email;
+	this.email = email;
 }
   
   
