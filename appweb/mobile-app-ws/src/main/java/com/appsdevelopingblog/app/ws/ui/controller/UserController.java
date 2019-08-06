@@ -3,6 +3,7 @@ package com.appsdevelopingblog.app.ws.ui.controller;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,12 +20,16 @@ public class UserController {
 	
 	@Autowired(required=true)
 	UserService userService;
-	@GetMapping
-	public String getUsers() {
-		return "All users";
+	
+	@GetMapping(path="/{id}")
+	public UserRest getUsers(@PathVariable String id) {
+		UserRest returnValue = new UserRest();
+		UserDto userDto = userService.getUserByUserId(id);
+		BeanUtils.copyProperties(userDto, returnValue);
+		return returnValue;
 	}
 
-	@PostMapping
+	@PostMapping 
 	public UserRest createUsers(@RequestBody UserDetailsRequestModel userDetail) {
 		
 		UserRest returnValue = new UserRest();
