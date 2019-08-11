@@ -1,7 +1,6 @@
 package com.appsdevelopingblog.app.ws.security;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.FilterChain;
@@ -16,6 +15,9 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.appsdevelopingblog.app.ws.SpringApplicationContext;
+import com.appsdevelopingblog.app.ws.service.UserService;
+import com.appsdevelopingblog.app.ws.shared.dto.UserDto;
 import com.appsdevelopingblog.app.ws.ui.model.request.UserLoginRequestModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -30,18 +32,19 @@ public class AutenticationFilter extends UsernamePasswordAuthenticationFilter {
 	}
 	
 	@Override
-	public Authentication attemptAuthentication(HttpServletRequest req,
+	public Authentication attemptAuthentication(HttpServletRequest request,
 			HttpServletResponse response) throws AuthenticationException {
 		
 		try {
 			UserLoginRequestModel creds = new ObjectMapper()
-					.readValue(req.getInputStream(), UserLoginRequestModel.class);
+					.readValue(request.getInputStream(), UserLoginRequestModel.class);
 			
-			return authenticationManager.authenticate(
+			
+			
+		return authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(
 						creds.getEmail(),
-						creds.getPassword(),
-						new ArrayList<>())
+						creds.getPassword())
 				);
 		} catch (IOException e) {
 			throw new RuntimeException();
@@ -62,7 +65,11 @@ public class AutenticationFilter extends UsernamePasswordAuthenticationFilter {
 				.signWith(SignatureAlgorithm.HS512, SecurityConstants.TOKEN_SECRET)
 				.compact();
 		
+		UserService userService = (UserService) SpringApplicationContext.getBean("userServiceImpl");
+		
+		UserDto userDto = userService.getUser(userName);
 		res.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX + token);
+		res.addHeader("UserID", userDto.getUserId());
 	}
 	
 
