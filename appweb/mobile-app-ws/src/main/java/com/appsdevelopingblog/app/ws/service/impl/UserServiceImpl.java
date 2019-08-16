@@ -15,6 +15,7 @@ import com.appsdevelopingblog.app.ws.service.UserService;
 import com.appsdevelopingblog.app.ws.shared.Utils;
 import com.appsdevelopingblog.app.ws.shared.dto.UserDto;
 import com.appsdevelopingblog.app.ws.ui.entity.UserEntity;
+import com.appsdevelopingblog.app.ws.ui.model.response.ErrorMessages;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -61,7 +62,7 @@ public class UserServiceImpl implements UserService{
 		UserEntity userEntity = userRepository.findByUserId(userId);
 		
 		if (userEntity == null) 
-			throw new UsernameNotFoundException(userId);
+			throw new UsernameNotFoundException(ErrorMessages.MISSING_REQUIRED_FIELD.getErrorMessage());
 		
 		BeanUtils.copyProperties(userEntity, returnValue);
 		
@@ -78,6 +79,34 @@ public class UserServiceImpl implements UserService{
 		UserDto returnValue = new UserDto();
 		BeanUtils.copyProperties(userEntity, returnValue);
 		return returnValue;
+	}
+
+	@Override
+	public UserDto updateUser(String UserDto, UserDto userDto) {
+		UserDto returnValue = new UserDto();
+		UserEntity userEntity = userRepository.findByUserId(UserDto);
+		
+		if (userEntity == null) 
+			throw new UsernameNotFoundException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+		
+		userEntity.setFirstName(userDto.getFirstName());
+		userEntity.setLastName(userDto.getLastName());
+		
+		UserEntity updatedUserDetail = userRepository.save(userEntity);
+		BeanUtils.copyProperties(updatedUserDetail, returnValue);
+
+		return returnValue;
+	}
+
+	@Override
+	public void deleteUser(String userId) {
+		UserDto returnValue = new UserDto();
+		UserEntity userEntity = userRepository.findByUserId(userId);
+		
+		if (userEntity == null) 
+			throw new UsernameNotFoundException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+		
+		userRepository.delete(userEntity);
 	}
 
 	
