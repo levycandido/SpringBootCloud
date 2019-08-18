@@ -1,4 +1,4 @@
-package com.appsdevelopingblog.app.ws.request;
+package com.appsdeveloperblog.app.ws.ui.model.request;
 
 public class UserLoginRequestModel {
 	private String email;
